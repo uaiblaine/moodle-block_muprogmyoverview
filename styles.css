@@ -4,51 +4,64 @@
     display: none;
 }
 
+/* Flat selectors on purpose: Moodle's RTL conversion does not understand nested rules. It lifted the
+   nested declarations into the block's own rule and its inner selectors to the top level, so in a
+   right-to-left language the block was hidden and bare rules such as .content reached every page. */
 .block_muprogmyoverview {
-    .block-controls {
-        display: none;
-    }
-    .block-cards {
-        border-top: 1px solid #dee2e6;
-        padding-top: 0.5rem;
-    }
     border: 0 !important; /* stylelint-disable-line declaration-no-important */
-    > .card-body {
-        padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
-        padding-left: 0 !important; /* stylelint-disable-line declaration-no-important */
-        padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.block_muprogmyoverview .block-controls {
+    display: none;
+}
+
+.block_muprogmyoverview .block-cards {
+    border-top: 1px solid #dee2e6;
+    padding-top: 0.5rem;
+}
+
+.block_muprogmyoverview > .card-body {
+    padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
+    padding-left: 0 !important; /* stylelint-disable-line declaration-no-important */
+    padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.block_muprogmyoverview .content {
+    min-height: 19.35rem;
+}
+
+.block_muprogmyoverview .paged-content-page-container {
+    min-height: 13rem;
+}
+
+.block_muprogmyoverview .description-image {
+    height: 5rem;
+    width: 5rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.block_muprogmyoverview .list-image {
+    height: 5rem;
+    width: 20rem;
+    background-position: center;
+    background-size: cover;
+}
+
+@media (max-width: 1199.98px) {
+    .block_muprogmyoverview .list-image {
+        width: 100%;
     }
-    .content {
-        min-height: 19.35rem;
-    }
-    .paged-content-page-container {
-        min-height: 13rem;
-    }
-    .description-image {
-        height: 5rem;
-        width: 5rem;
-        background-position: center;
-        background-size: cover;
-    }
-    .list-image {
-        height: 5rem;
-        width: 20rem;
-        background-position: center;
-        background-size: cover;
-    }
-    @media (max-width: 1199.98px) {
-        .list-image {
-            width: 100%;
-        }
-    }
-    .whitebutton .btn-secondary {
-        background: white;
-        border-color: var(--bs-primary);
-        color: var(--bs-primary);
-    }
-    .program-card .card-img-top {
-        height: 7rem;
-        background-position: center;
-        background-size: cover;
-    }
+}
+
+.block_muprogmyoverview .whitebutton .btn-secondary {
+    background: white;
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+.block_muprogmyoverview .program-card .card-img-top {
+    height: 7rem;
+    background-position: center;
+    background-size: cover;
 }
