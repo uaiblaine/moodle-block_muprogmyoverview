@@ -37,8 +37,8 @@ Feature: The My programs page overview block allows users to favourite their pro
     Given I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
     When I click on ".programmenubtn" "css_element" in the "//div[contains(@class, 'program-card') and contains(.,'Program 5')]" "xpath_element"
     And I click on "Star this program" "link" in the "//div[contains(@class, 'program-card') and contains(.,'Program 5')]" "xpath_element"
-    And I click on "Display drop-down menu" "button" in the "My programs overview page" "block"
-    And I click on "List" "link" in the "My programs overview page" "block"
+    And I click on "Display drop-down menu" "button" in the "My programs overview" "block"
+    And I click on "List" "link" in the "My programs overview" "block"
     Then "//li[contains(concat(' ', normalize-space(@class), ' '), 'list-group-item') and contains(.,'Program 5')]//span[@data-region='is-favourite' and @aria-hidden='false']" "xpath_element" should exist
     And "//li[contains(concat(' ', normalize-space(@class), ' '), 'list-group-item') and contains(.,'Program 5')]//span[@data-region='is-favourite' and @aria-hidden='true']" "xpath_element" should not exist
     And "//li[contains(concat(' ', normalize-space(@class), ' '), 'list-group-item') and contains(.,'Program 1')]//span[@data-region='is-favourite' and @aria-hidden='true']" "xpath_element" should exist
@@ -48,8 +48,8 @@ Feature: The My programs page overview block allows users to favourite their pro
     Given I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
     When I click on ".programmenubtn" "css_element" in the "//div[contains(@class, 'program-card') and contains(.,'Program 5')]" "xpath_element"
     And I click on "Star this program" "link" in the "//div[contains(@class, 'program-card') and contains(.,'Program 5')]" "xpath_element"
-    And I click on "Display drop-down menu" "button" in the "My programs overview page" "block"
-    And I click on "Details" "link" in the "My programs overview page" "block"
+    And I click on "Display drop-down menu" "button" in the "My programs overview" "block"
+    And I click on "Details" "link" in the "My programs overview" "block"
     Then "//div[contains(concat(' ', normalize-space(@class), ' '), 'program-descriptionitem') and contains(.,'Program 5')]//span[@data-region='is-favourite' and @aria-hidden='false']" "xpath_element" should exist
     And "//div[contains(concat(' ', normalize-space(@class), ' '), 'program-descriptionitem') and contains(.,'Program 5')]//span[@data-region='is-favourite' and @aria-hidden='true']" "xpath_element" should not exist
     And "//div[contains(concat(' ', normalize-space(@class), ' '), 'program-descriptionitem') and contains(.,'Program 1')]//span[@data-region='is-favourite' and @aria-hidden='true']" "xpath_element" should exist

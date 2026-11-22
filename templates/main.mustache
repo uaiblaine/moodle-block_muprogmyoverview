@@ -23,12 +23,14 @@
     {}
 }}
 
-<div id="block-muprogmyoverview-{{uniqid}}" class="block-muprogmyoverview block-cards" data-region="muprogmyoverview" role="navigation">
+<div id="block-muprogmyoverview-{{uniqid}}" class="block-muprogmyoverview block-cards" data-region="muprogmyoverview">
     <div role="search" data-region="filter" class="d-flex align-items-center my-2" aria-label="{{#str}} aria:controls, block_muprogmyoverview {{/str}}">
         <div class="d-flex flex-wrap gap-1 align-items-center w-100">
             {{> block_muprogmyoverview/nav-grouping-selector }}
 
-            {{> block_muprogmyoverview/nav-search-widget }}
+            {{< block_muprogmyoverview/nav-search-widget }}
+                {{$searchrole}}{{/searchrole}}
+            {{/ block_muprogmyoverview/nav-search-widget }}
 
             {{> block_muprogmyoverview/nav-sort-selector }}
 

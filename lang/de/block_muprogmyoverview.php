@@ -23,14 +23,13 @@
  * model and has not yet been reviewed by a human translator. Corrections are
  * welcome.
  *
- * HINWEIS: Diese deutsche Übersetzung wurde automatisch von einem KI-Sprachmodell
- * erstellt und noch nicht von einem Menschen geprüft. Korrekturen sind willkommen.
- *
  * @package    block_muprogmyoverview
  * @copyright  2026 Petr Skoda
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['addprimarymenu'] = 'Menü „Meine Programme“ hinzufügen';
+$string['addprimarymenu_desc'] = 'Wenn diese Option aktiviert ist, wird der Eintrag „Meine Programme“ für alle Nutzer/innen, die Programmen zugewiesen sind, zum Hauptmenü hinzugefügt. Wenn sie deaktiviert ist, kann die Programmübersicht als Block zum Dashboard hinzugefügt werden.';
 $string['addtofavourites'] = 'Programm als Favorit markieren';
 $string['all'] = 'Alle';
 $string['allincludinghidden'] = 'Alle (inklusive aus Ansicht entfernte)';
@@ -76,6 +75,8 @@ $string['inprogress'] = 'Laufende';
 $string['layouts'] = 'Verfügbare Layouts';
 $string['layouts_help'] = 'Layouts für die Programmübersicht, die den Nutzer/innen zur Auswahl stehen. Wenn keine ausgewählt sind, wird das Kachellayout verwendet.';
 $string['list'] = 'Liste';
+$string['muprogmyoverview:addinstance'] = 'Block Programmübersicht hinzufügen';
+$string['muprogmyoverview:myaddinstance'] = 'Block Programmübersicht zum Dashboard hinzufügen';
 $string['myprograms'] = 'Meine Programme';
 $string['noprograms'] = 'Keine Programme';
 $string['past'] = 'Vergangene';

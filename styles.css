@@ -7,20 +7,20 @@
 /* Flat selectors on purpose: Moodle's RTL conversion does not understand nested rules. It lifted the
    nested declarations into the block's own rule and its inner selectors to the top level, so in a
    right-to-left language the block was hidden and bare rules such as .content reached every page. */
-.block_muprogmyoverview {
+#page-block-muprogmyoverview-index .block_muprogmyoverview {
     border: 0 !important; /* stylelint-disable-line declaration-no-important */
 }
 
-.block_muprogmyoverview .block-controls {
+#page-block-muprogmyoverview-index .block_muprogmyoverview .block-controls {
     display: none;
 }
 
-.block_muprogmyoverview .block-cards {
+#page-block-muprogmyoverview-index .block_muprogmyoverview .block-cards {
     border-top: 1px solid #dee2e6;
     padding-top: 0.5rem;
 }
 
-.block_muprogmyoverview > .card-body {
+#page-block-muprogmyoverview-index .block_muprogmyoverview > .card-body {
     padding-top: 0 !important; /* stylelint-disable-line declaration-no-important */
     padding-left: 0 !important; /* stylelint-disable-line declaration-no-important */
     padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */

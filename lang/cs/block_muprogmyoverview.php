@@ -24,6 +24,8 @@
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['addprimarymenu'] = 'Přidat nabídku „Moje programy“';
+$string['addprimarymenu_desc'] = 'Je-li povoleno, položka „Moje programy“ se přidá do hlavní nabídky všem uživatelům, kteří jsou přiřazeni do programů. Je-li zakázáno, přehled programů lze přidat jako blok na nástěnku.';
 $string['addtofavourites'] = 'Označit program hvězdičkou';
 $string['all'] = 'Všechny';
 $string['allincludinghidden'] = 'Všechny (včetně odstraněných ze zobrazení)';
@@ -69,10 +71,12 @@ $string['inprogress'] = 'Probíhající';
 $string['layouts'] = 'Dostupná zobrazení';
 $string['layouts_help'] = 'Zobrazení přehledu mých programů, která si uživatelé mohou vybrat. Pokud není vybráno žádné, použije se zobrazení karet.';
 $string['list'] = 'Seznam';
+$string['muprogmyoverview:addinstance'] = 'Přidat blok Přehled mých programů';
+$string['muprogmyoverview:myaddinstance'] = 'Přidat blok Přehled mých programů na nástěnku';
 $string['myprograms'] = 'Moje programy';
 $string['noprograms'] = 'Žádné programy';
 $string['past'] = 'Minulé';
-$string['pluginname'] = 'Stránka s přehledem mých programů';
+$string['pluginname'] = 'Přehled mých programů';
 $string['privacy:metadata:overviewgroupingpreference'] = 'Předvolba seskupení na stránce s přehledem mých programů.';
 $string['privacy:metadata:overviewpagingpreference'] = 'Předvolba stránkování na stránce s přehledem mých programů.';
 $string['privacy:metadata:overviewsortpreference'] = 'Předvolba řazení na stránce s přehledem mých programů.';

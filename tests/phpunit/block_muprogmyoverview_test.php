@@ -75,8 +75,9 @@ final class block_muprogmyoverview_test extends \advanced_testcase {
         // Test we receive all we expect (exact number and values of settings).
         $this->assertNotEmpty($configs);
         $this->assertEmpty((array) $configs->instance);
-        $this->assertCount(10, (array) $configs->plugin);
+        $this->assertCount(11, (array) $configs->plugin);
         // Test default values.
+        $this->assertEquals(0, $configs->plugin->addprimarymenu);
         $this->assertEquals(0, $configs->plugin->displaycategories);
         $this->assertEquals(1, $configs->plugin->displaygroupingall);
         $this->assertEquals(0, $configs->plugin->displaygroupingallincludinghidden);
@@ -87,5 +88,120 @@ final class block_muprogmyoverview_test extends \advanced_testcase {
         $this->assertEquals(1, $configs->plugin->displaygroupingfavourites);
         $this->assertEquals('card,list,description', $configs->plugin->layouts);
         $this->assertEquals(get_config('block_muprogmyoverview', 'version'), $configs->plugin->version);
+    }
+
+    /**
+     * Test page types where the block can be added.
+     */
+    public function test_applicable_formats(): void {
+        $block = block_instance('muprogmyoverview');
+
+        $this->assertTrue(blocks_name_allowed_in_format('muprogmyoverview', 'my-index'));
+        $this->assertTrue(blocks_name_allowed_in_format('muprogmyoverview', 'tool-muhome-index'));
+        $this->assertTrue(blocks_name_allowed_in_format('muprogmyoverview', 'block-muprogmyoverview-index'));
+        $this->assertFalse(blocks_name_allowed_in_format('muprogmyoverview', 'site-index'));
+        $this->assertFalse(blocks_name_allowed_in_format('muprogmyoverview', 'course-view-topics'));
+        $this->assertFalse(blocks_name_allowed_in_format('muprogmyoverview', 'mod-forum-view'));
+        $this->assertFalse(blocks_name_allowed_in_format('muprogmyoverview', 'admin-index'));
+
+        $this->assertTrue($block->can_block_be_added(new \moodle_page()));
+    }
+
+    /**
+     * Test block is locked on the dedicated page only.
+     */
+    public function test_instance_restrictions(): void {
+        $this->resetAfterTest(true);
+
+        $user = $this->getDataGenerator()->create_user();
+        $this->setUser($user);
+
+        $page = new \moodle_page();
+        $page->set_context(\context_system::instance());
+        $page->set_pagetype('block-muprogmyoverview-index');
+        $block = block_instance('muprogmyoverview');
+        $block->page = $page;
+        $this->assertFalse($block->instance_can_be_edited());
+        $this->assertFalse($block->instance_can_be_hidden());
+        $this->assertFalse($block->instance_can_be_collapsed());
+        $this->assertTrue($block->hide_header());
+
+        $page = new \moodle_page();
+        $page->set_context(\context_user::instance($user->id));
+        $page->set_pagetype('my-index');
+        $block = block_instance('muprogmyoverview');
+        $block->page = $page;
+        $this->assertTrue($block->instance_can_be_edited());
+        $this->assertTrue($block->instance_can_be_hidden());
+        $this->assertTrue($block->instance_can_be_collapsed());
+        $this->assertFalse($block->hide_header());
+
+        $page = new \moodle_page();
+        $page->set_context(\context_system::instance());
+        $page->set_pagetype('tool-muhome-index');
+        $block = block_instance('muprogmyoverview');
+        $block->page = $page;
+        $this->assertTrue($block->instance_can_be_edited());
+        $this->assertTrue($block->instance_can_be_hidden());
+        $this->assertTrue($block->instance_can_be_collapsed());
+        $this->assertFalse($block->hide_header());
+    }
+
+    /**
+     * Test block content depends on current user.
+     */
+    public function test_get_content(): void {
+        $this->resetAfterTest(true);
+
+        /** @var \tool_muprog_generator $generator */
+        $generator = $this->getDataGenerator()->get_plugin_generator('tool_muprog');
+
+        $program1 = $generator->create_program();
+        $user0 = $this->getDataGenerator()->create_user();
+        $user1 = $this->getDataGenerator()->create_user();
+        $generator->create_program_allocation(['userid' => $user1->id, 'programid' => $program1->id]);
+
+        $page = new \moodle_page();
+        $page->set_context(\context_system::instance());
+        $page->set_pagetype('tool-muhome-index');
+        $page->set_url('/admin/tool/muhome/');
+
+        $dedicatedpage = new \moodle_page();
+        $dedicatedpage->set_context(\context_system::instance());
+        $dedicatedpage->set_pagetype('block-muprogmyoverview-index');
+        $dedicatedpage->set_url('/blocks/muprogmyoverview/');
+
+        $this->setUser(null);
+        $block = block_instance('muprogmyoverview');
+        $block->page = $page;
+        $this->assertNull($block->get_content());
+
+        $this->setGuestUser();
+        $block = block_instance('muprogmyoverview');
+        $block->page = $page;
+        $this->assertNull($block->get_content());
+
+        $this->setUser($user0);
+        $block = block_instance('muprogmyoverview');
+        $block->page = $page;
+        $content = $block->get_content();
+        $this->assertInstanceOf(\stdClass::class, $content);
+        $this->assertSame('', $content->text);
+        $this->assertSame('', $content->footer);
+
+        $block = block_instance('muprogmyoverview');
+        $block->page = $dedicatedpage;
+        $content = $block->get_content();
+        $this->assertInstanceOf(\stdClass::class, $content);
+        $this->assertStringContainsString('data-region="muprogmyoverview"', $content->text);
+        $this->assertSame('', $content->footer);
+
+        $this->setUser($user1);
+        $block = block_instance('muprogmyoverview');
+        $block->page = $page;
+        $content = $block->get_content();
+        $this->assertInstanceOf(\stdClass::class, $content);
+        $this->assertStringContainsString('data-region="muprogmyoverview"', $content->text);
+        $this->assertSame('', $content->footer);
     }
 }

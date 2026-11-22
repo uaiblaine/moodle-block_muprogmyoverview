@@ -17,7 +17,7 @@
 // phpcs:disable moodle.Files.BoilerplateComment.CommentEndedTooSoon
 
 /**
- * My programs capabilities.
+ * My programs overview capabilities.
  *
  * @package     block_muprogmyoverview
  * @copyright   2025 Petr Skoda
@@ -27,4 +27,21 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = [
+    'block/muprogmyoverview:myaddinstance' => [
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => [
+            'user' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/my:manageblocks',
+    ],
+
+    'block/muprogmyoverview:addinstance' => [
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
+    ],
 ];

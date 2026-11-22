@@ -42,5 +42,12 @@ function xmldb_block_muprogmyoverview_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2026022045.02, 'block', 'muprogmyoverview');
     }
 
+    if ($oldversion < 2026111853) {
+        // Keep previous behaviour, new 5.3 sites will not see the "My programs" primary menu
+        // because Moodle removed the My courses.
+        set_config('addprimarymenu', 1, 'block_muprogmyoverview');
+        upgrade_plugin_savepoint(true, 2026111853, 'block', 'muprogmyoverview');
+    }
+
     return true;
 }

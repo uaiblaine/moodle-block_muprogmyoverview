@@ -154,4 +154,41 @@ final class util_test extends \advanced_testcase {
         util::cleanup_hidden_programs(true);
         $this->assertEqualsCanonicalizing([$program2->id], util::get_hidden_programs_on_timeline());
     }
+
+    public function test_hook_primary_extend(): void {
+        global $PAGE;
+
+        /** @var \tool_muprog_generator $generator */
+        $generator = $this->getDataGenerator()->get_plugin_generator('tool_muprog');
+
+        $program1 = $generator->create_program();
+        $user0 = $this->getDataGenerator()->create_user();
+        $user1 = $this->getDataGenerator()->create_user();
+        $generator->create_program_allocation(['userid' => $user1->id, 'programid' => $program1->id]);
+
+        $PAGE->set_url('/');
+
+        $this->assertSame('0', get_config('block_muprogmyoverview', 'addprimarymenu'));
+
+        $this->setUser($user1);
+        $primary = new \core\navigation\views\primary($PAGE);
+        $primary->initialise();
+        $this->assertNotContains('block_muprogmyoverview_myprograms', $primary->get_children_key_list());
+
+        set_config('addprimarymenu', 1, 'block_muprogmyoverview');
+
+        $primary = new \core\navigation\views\primary($PAGE);
+        $primary->initialise();
+        $this->assertContains('block_muprogmyoverview_myprograms', $primary->get_children_key_list());
+
+        $this->setUser($user0);
+        $primary = new \core\navigation\views\primary($PAGE);
+        $primary->initialise();
+        $this->assertNotContains('block_muprogmyoverview_myprograms', $primary->get_children_key_list());
+
+        $this->setGuestUser();
+        $primary = new \core\navigation\views\primary($PAGE);
+        $primary->initialise();
+        $this->assertNotContains('block_muprogmyoverview_myprograms', $primary->get_children_key_list());
+    }
 }

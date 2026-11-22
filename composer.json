@@ -1,13 +1,14 @@
 {
   "name": "mutms/moodle-block_muprogmyoverview",
   "type": "moodle-block",
-  "description": "My programs overview page for Moodle LMS",
+  "description": "My programs overview block for Moodle LMS",
   "homepage": "https://github.com/mutms/moodle-block_muprogmyoverview",
   "license": "GPL-3.0-or-later",
   "require": {
     "moodle/composer-installer": "*",
     "moodle/moodle": "5.3.*",
-    "mutms/moodle-tool_mulib": "*"
+    "mutms/moodle-tool_mulib": "*",
+    "mutms/moodle-tool_muprog": "*"
   },
   "support": {
     "issues": "https://github.com/mutms/moodle-block_muprogmyoverview/issues",

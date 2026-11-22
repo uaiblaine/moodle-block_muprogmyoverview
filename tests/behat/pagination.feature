@@ -35,8 +35,8 @@ Feature: My programs page overview block pagination
 
   Scenario: The pagination controls should be hidden if I am not allocated in any programs
     When I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
-    Then I should see "You do not have any active programs." in the "My programs overview page" "block"
-    And I should not see "Show" in the "My programs overview page" "block"
+    Then I should see "You do not have any active programs." in the "My programs overview" "block"
+    And I should not see "Show" in the "My programs overview" "block"
     And ".block_muprogmyoverview .dropdown-menu.show" "css_element" should not be visible
     And ".block_muprogmyoverview [data-control='next']" "css_element" should not be visible
     And ".block_muprogmyoverview [data-control='previous']" "css_element" should not be visible
@@ -58,7 +58,7 @@ Feature: My programs page overview block pagination
       | student1 | Program 11 |
       | student1 | Program 12 |
     When I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
-    Then I should not see "Show" in the "My programs overview page" "block"
+    Then I should not see "Show" in the "My programs overview" "block"
     And ".block_muprogmyoverview .dropdown-menu.show" "css_element" should not be visible
     And ".block_muprogmyoverview [data-control='next']" "css_element" should not be visible
     And ".block_muprogmyoverview [data-control='previous']" "css_element" should not be visible
@@ -101,7 +101,7 @@ Feature: My programs page overview block pagination
       | student1 | Program 12 |
       | student1 | Program 13 |
     And I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
-    When I click on "[data-action='limit-toggle']" "css_element" in the "My programs overview page" "block"
+    When I click on "[data-action='limit-toggle']" "css_element" in the "My programs overview" "block"
     Then I should see "All" in the ".dropdown-menu.show" "css_element"
     And I should see "12" in the ".dropdown-menu.show" "css_element"
     And ".block_muprogmyoverview [data-control='next']" "css_element" should be visible
@@ -147,7 +147,7 @@ Feature: My programs page overview block pagination
       | student1 | Program 13 |
     When I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
     And I wait until ".block_muprogmyoverview [data-control='next']" "css_element" exists
-    And I click on "[data-control='next']" "css_element" in the "My programs overview page" "block"
+    And I click on "[data-control='next']" "css_element" in the "My programs overview" "block"
     Then the "class" attribute of ".block_muprogmyoverview [data-control='next']" "css_element" should contain "disabled"
     And I log out
 
@@ -181,11 +181,11 @@ Feature: My programs page overview block pagination
       | student1 | Program 25 |
     When I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
     And I wait until ".block_muprogmyoverview [data-control='next']" "css_element" exists
-    And I click on "[data-control='next']" "css_element" in the "My programs overview page" "block"
+    And I click on "[data-control='next']" "css_element" in the "My programs overview" "block"
     Then the "class" attribute of ".block_muprogmyoverview [data-control='next']" "css_element" should not contain "disabled"
     And the "class" attribute of ".block_muprogmyoverview [data-control='previous']" "css_element" should not contain "disabled"
-    And I should see "Program 13" in the "My programs overview page" "block"
-    And I should see "Program 24" in the "My programs overview page" "block"
-    But I should not see "Program 12" in the "My programs overview page" "block"
-    And I should not see "Program 25" in the "My programs overview page" "block"
+    And I should see "Program 13" in the "My programs overview" "block"
+    And I should see "Program 24" in the "My programs overview" "block"
+    But I should not see "Program 12" in the "My programs overview" "block"
+    And I should not see "Program 25" in the "My programs overview" "block"
     And I log out

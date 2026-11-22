@@ -38,7 +38,7 @@ Feature: The My programs page overview block allows users to persistence of thei
 
   Scenario: Toggle the page limit between page reloads
     Given I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
-    When I click on "[data-action='limit-toggle']" "css_element" in the "My programs overview page" "block"
+    When I click on "[data-action='limit-toggle']" "css_element" in the "My programs overview" "block"
     And I click on "All" "link" in the ".dropdown-menu.show" "css_element"
     Then I should see "Program 13"
     And I reload the page
@@ -47,9 +47,9 @@ Feature: The My programs page overview block allows users to persistence of thei
 
   Scenario: Toggle the page limit between grouping changes
     Given I am on the "block_muprogmyoverview > My programs" page logged in as "student1"
-    When I click on "[data-action='limit-toggle']" "css_element" in the "My programs overview page" "block"
+    When I click on "[data-action='limit-toggle']" "css_element" in the "My programs overview" "block"
     And I click on "All" "link" in the ".dropdown-menu.show" "css_element"
-    And I click on "All" "button" in the "My programs overview page" "block"
-    And I click on "In progress" "link" in the "My programs overview page" "block"
+    And I click on "All" "button" in the "My programs overview" "block"
+    And I click on "In progress" "link" in the "My programs overview" "block"
     Then I should see "Program 13"
     And I should see "All" in the ".block-muprogmyoverview [data-action='limit-toggle']" "css_element"

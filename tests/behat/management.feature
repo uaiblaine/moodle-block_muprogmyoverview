@@ -21,6 +21,8 @@ Feature: Program overview block allows viewer to access Program managment
     And the following "tool_muprog > program_allocations" exist:
       | program     | user    |
       | Program 000 | viewer1 |
+    And the following config values are set as admin:
+      | addprimarymenu | 1 | block_muprogmyoverview |
 
   @javascript
   Scenario: Program viewer with allocation may access Program management from Program overview block
