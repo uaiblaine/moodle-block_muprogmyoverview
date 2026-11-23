@@ -42,6 +42,13 @@ if ($ADMIN->fulltree) {
         ''
     ));
 
+    $settings->add(new admin_setting_configcheckbox(
+        'block_muprogmyoverview/addprimarymenu',
+        get_string('addprimarymenu', 'block_muprogmyoverview'),
+        get_string('addprimarymenu_desc', 'block_muprogmyoverview'),
+        0
+    ));
+
     // Display Program Categories on Dashboard program items (cards, lists, description items).
     $settings->add(new admin_setting_configcheckbox(
         'block_muprogmyoverview/displaycategories',

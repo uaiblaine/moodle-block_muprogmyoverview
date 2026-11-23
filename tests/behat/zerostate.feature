@@ -15,6 +15,8 @@ Feature: Zero state on My programs page overview block
     And the following "tool_muprog > program_allocations" exist:
       | user     | program   |
       | student1 | Program 1 |
+    And the following config values are set as admin:
+      | addprimarymenu | 1 | block_muprogmyoverview |
 
   Scenario: Users cannot see My programs menu entry if they do not have any programs
     When I log in as "student2"
@@ -24,4 +26,4 @@ Feature: Zero state on My programs page overview block
     When I log in as "student1"
     And I should see "My programs"
     And I follow "My programs"
-    Then I should see "My programs overview page"
+    Then I should see "My programs overview"

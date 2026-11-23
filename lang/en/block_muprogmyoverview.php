@@ -25,6 +25,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['addprimarymenu'] = 'Add "My programs" menu';
+$string['addprimarymenu_desc'] = 'When enabled "My programs" primary item will be added for all users that are allocated to programs. If disabled program overview may be added as a block to the dashboard.';
 $string['addtofavourites'] = 'Star this program';
 $string['all'] = 'All';
 $string['allincludinghidden'] = 'All (including removed from view)';
@@ -70,10 +72,12 @@ $string['inprogress'] = 'In progress';
 $string['layouts'] = 'Available layouts';
 $string['layouts_help'] = 'My programs overview layouts which are available for selection by users. If none are selected, the card layout will be used.';
 $string['list'] = 'List';
+$string['muprogmyoverview:addinstance'] = 'Add My programs overview block';
+$string['muprogmyoverview:myaddinstance'] = 'Add My programs overview block to Dashboard';
 $string['myprograms'] = 'My programs';
 $string['noprograms'] = 'No programs';
 $string['past'] = 'Past';
-$string['pluginname'] = 'My programs overview page';
+$string['pluginname'] = 'My programs overview';
 $string['privacy:metadata:overviewgroupingpreference'] = 'The My programs overview page grouping preference.';
 $string['privacy:metadata:overviewpagingpreference'] = 'The My programs overview page paging preference.';
 $string['privacy:metadata:overviewsortpreference'] = 'The My programs overview page sort preference.';

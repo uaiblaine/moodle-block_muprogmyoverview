@@ -134,6 +134,9 @@ final class util {
      * @param \core\hook\navigation\primary_extend $hook
      */
     public static function hook_primary_extend(\core\hook\navigation\primary_extend $hook): void {
+        if (!get_config('block_muprogmyoverview', 'addprimarymenu')) {
+            return;
+        }
         if (!is_callable([\tool_mulib\local\mulib::class, 'is_muprog_active'])) {
             return;
         }

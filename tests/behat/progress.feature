@@ -85,6 +85,8 @@ Feature: Program overview block show users their progress on programs
       | program     | user     |
       | Program 000 | student1 |
       | Program 000 | student2 |
+    And the following config values are set as admin:
+      | addprimarymenu | 1 | block_muprogmyoverview |
 
     And I log in as "admin"
     And I am on "Course 1" course homepage
@@ -118,23 +120,23 @@ Feature: Program overview block show users their progress on programs
     When I log in as "student1"
 
     And I click on "My programs" "link" in the ".primary-navigation" "css_element"
-    And I should see "0%" in the "My programs overview page" "block"
+    And I should see "0%" in the "My programs overview" "block"
 
     And I follow "Program 000"
     And I follow "Course 1"
     And I follow "Sample page"
     And I click on "My programs" "link" in the ".primary-navigation" "css_element"
-    And I should see "25%" in the "My programs overview page" "block"
+    And I should see "25%" in the "My programs overview" "block"
 
     And I follow "Program 000"
     And I follow "Course 2"
     And I follow "Sample page"
     And I click on "My programs" "link" in the ".primary-navigation" "css_element"
-    And I should see "50%" in the "My programs overview page" "block"
+    And I should see "50%" in the "My programs overview" "block"
 
     And I follow "Program 000"
     And I follow "Course 3"
     And I follow "Sample page"
     And I click on "My programs" "link" in the ".primary-navigation" "css_element"
-    And I should see "75%" in the "My programs overview page" "block"
-    Then I should see "Completed" in the "My programs overview page" "block"
+    And I should see "75%" in the "My programs overview" "block"
+    Then I should see "Completed" in the "My programs overview" "block"
